@@ -5,8 +5,6 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
-
 /**
  * @author hjy
  * @date 2020/4/25 21:01
