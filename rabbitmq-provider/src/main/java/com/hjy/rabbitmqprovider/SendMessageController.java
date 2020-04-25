@@ -39,5 +39,49 @@ public class SendMessageController {
     }
 
 
+    @GetMapping("/sendTopicMessage1")
+    public String sendTopicMessage1() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: M A N ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> manMap = new HashMap<>();
+        manMap.put("messageId", messageId);
+        manMap.put("messageData", messageData);
+        manMap.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("topicExchange"
+                , TopicRabbitConfig.MAN, JSON.toJSONString(manMap));
+        return "ok";
+    }
 
+    @GetMapping("/sendTopicMessage2")
+    public String sendTopicMessage2() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: WOMEN ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> womanMap = new HashMap<>();
+        womanMap.put("messageId", messageId);
+        womanMap.put("messageData", messageData);
+        womanMap.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("topicExchange"
+                , TopicRabbitConfig.WOMEN, JSON.toJSONString(womanMap));
+        return "ok";
+    }
+
+    /**
+     * 扇形
+     *
+     * @return
+     */
+    @GetMapping("/sendFanoutMessage")
+    public String sendFanoutMessage() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: testFanoutMessage ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>();
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("fanoutExchange", null, JSON.toJSONString(map));
+        return "ok";
+    }
 }
