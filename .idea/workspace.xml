@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ac4933f-b5bb-4b84-923c-97e48b181723" name="Default Changelist" comment="" />
+    <list default="true" id="9ac4933f-b5bb-4b84-923c-97e48b181723" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/rabbitmq/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq/sql.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq/src/main/java/com/hjy/rabbitmq/RabbitmqApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq/src/main/java/com/hjy/rabbitmq/pojo/Mail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq/src/main/java/com/hjy/rabbitmq/util/MailUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq/src/test/java/com/hjy/rabbitmq/RabbitmqApplicationTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +24,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MavenImportPreferences">
@@ -26,6 +36,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1b1Z48zkKkRR6sUy4phuSlhfDhU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -39,6 +50,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunManager" selected="Spring Boot.RabbitmqConsumerApplication">
@@ -75,12 +87,24 @@
       <option name="presentableId" value="Default" />
       <updated>1587801365677</updated>
       <workItem from="1587801371139" duration="139000" />
-      <workItem from="1587801526712" duration="9554000" />
+      <workItem from="1587801526712" duration="9909000" />
     </task>
+    <task id="LOCAL-00001" summary="mq-直连型交换机demo">
+      <created>1587823783525</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587823783525</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="mq-直连型交换机demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="mq-直连型交换机demo" />
   </component>
   <component name="WindowStateProjectService">
     <state x="816" y="161" key="#Plugins" timestamp="1587801545301">
@@ -91,10 +115,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1129" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587814897030" />
-    <state x="1153" y="273" key="FileChooserDialogImpl" timestamp="1587802320436">
+    <state x="636" y="92" key="CommitChangelistDialog2" timestamp="1587823782726">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1153" y="273" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587802320436" />
+    <state x="636" y="92" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587823782726" />
+    <state x="1153" y="273" key="FileChooserDialogImpl" timestamp="1587823665405">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1153" y="273" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587823665405" />
     <state width="1456" height="428" key="GridCell.Tab.0.bottom" timestamp="1587823401512">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
