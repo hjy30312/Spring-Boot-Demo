@@ -1,9 +1,13 @@
 package com.hjy.rabbitmqprovider;
 
 import com.alibaba.fastjson.JSON;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -28,11 +32,10 @@ public class SendMessageController {
         String messageData = "test message, hello!";
         String createTime = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(16);
         map.put("messageId", messageId);
         map.put("messageData", messageData);
         map.put("createTime", createTime);
-
         rabbitTemplate.convertAndSend("TestDirectExchange"
                 , "TestDirectRouting", JSON.toJSONString(map));
         return "success";
@@ -77,7 +80,7 @@ public class SendMessageController {
         String messageId = String.valueOf(UUID.randomUUID());
         String messageData = "message: testFanoutMessage ";
         String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(16);
         map.put("messageId", messageId);
         map.put("messageData", messageData);
         map.put("createTime", createTime);
@@ -94,12 +97,37 @@ public class SendMessageController {
         String messageId = String.valueOf(UUID.randomUUID());
         String messageData = "message: non-existent-exchange test message ";
         String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(16);
         map.put("messageId", messageId);
         map.put("messageData", messageData);
         map.put("createTime", createTime);
         rabbitTemplate.convertAndSend("non-existent-exchange", "TestDirectRouting", map);
         return "ok";
     }
+
+
+    /**
+     * 发送延时消息
+     * @param msg
+     */
+    @RequestMapping("/delayTest")
+    public void sendDelayMsg(String msg) {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "延时消息 ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("delay-exchange", "delay_queue_1",
+                JSON.toJSONString(map), new MessagePostProcessor() {
+            @Override
+            public Message postProcessMessage(Message message) throws AmqpException {
+                message.getMessageProperties().setHeader("x-delay",10000);
+                return message;
+            }
+        });
+    }
+
 
 }
